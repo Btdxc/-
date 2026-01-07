@@ -20,6 +20,7 @@ var GoodsMap = make(map[string]*Goods)
 var m sync.Mutex
 
 func teller(id int, orderIDChan <-chan int, goodsNameChan <-chan string, quanTityChan <-chan int, wg *sync.WaitGroup) {
+	
 	defer wg.Done()
 	for {
 		orderID, ok1 := <-orderIDChan
@@ -52,6 +53,7 @@ func teller(id int, orderIDChan <-chan int, goodsNameChan <-chan string, quanTit
 }
 
 func main() {
+	
 	Scanner := bufio.NewScanner(os.Stdin)
 	fmt.Println("请输入商品信息（货物名字，价格，剩余容量）输入exit结束")
 	for Scanner.Scan() {
