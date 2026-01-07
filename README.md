@@ -27,7 +27,6 @@ func teller(id int, orderIDChan <-chan int, goodsNameChan <-chan string, quanTit
 		quanTity, ok3 := <-quanTityChan
 		if !ok1 || !ok2 || !ok3 {
 			break
-
 		}
 		//多个柜员对商品进行操作，要加锁
 		m.Lock()
@@ -53,7 +52,6 @@ func teller(id int, orderIDChan <-chan int, goodsNameChan <-chan string, quanTit
 }
 
 func main() {
-
 	Scanner := bufio.NewScanner(os.Stdin)
 	fmt.Println("请输入商品信息（货物名字，价格，剩余容量）输入exit结束")
 	for Scanner.Scan() {
@@ -110,7 +108,6 @@ func main() {
 	close(orderIDChan)
 	close(goodsNameChan)
 	close(quanTityChan)
-
 	wg.Wait()
 	fmt.Println("\n订单处理完毕")
 }
